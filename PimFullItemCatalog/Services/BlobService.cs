@@ -8,7 +8,7 @@ using System;
 
 namespace PimItemFullCatalog.Services
 {
-    internal class BlobService:IBlobService
+    internal class BlobService:IBlobService 
     {
         private readonly BlobServiceClient _blobServiceClient ;
         
