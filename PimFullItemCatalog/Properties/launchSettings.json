@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "func_bas_pim_item_full_cat_download": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7199",
+      "launchBrowser": false
+    }
+  }
+}
