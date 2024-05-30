@@ -52,8 +52,21 @@ namespace PimItemFullCatalog.Services
         public async Task<IActionResult> UploadFile(
      [HttpTrigger(AuthorizationLevel.Anonymous,  "post", Route = null)] HttpRequest req,
           ILogger log, ExecutionContext context)
-        {
+        {          
             var file = req.Form.Files["File"];
+            var myBlob = file.OpenReadStream();
+            await _blobService.UploadFileAsync(myBlob, _containerName, file.FileName, file.ContentType);
+            return new OkObjectResult("file uploaded successfylly");
+        }
+
+
+        [FunctionName("UploadFile2")]
+        [HttpPost]
+        public async Task<IActionResult> UploadFile2(
+[HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
+ [FromForm] IFormFile file)
+        {
+           // var file = req.Form.Files["File"];
             var myBlob = file.OpenReadStream();
             await _blobService.UploadFileAsync(myBlob, _containerName, file.FileName, file.ContentType);
             return new OkObjectResult("file uploaded successfylly");
